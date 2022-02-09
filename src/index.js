@@ -1,17 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { Children } from 'react';
+import ReactDom from 'react-dom';
+import ReactDOM from 'react-dom'
+import styles from './index.css'
+
+function FancyBorder(props){
+        return(
+                <div className={'FancyBorder FancyBorder-' + props.color}>
+                        {props.children}
+                </div>
+        )
+}
+
+function WelcomeDialog(){
+        return(
+                <FancyBorder color="Blue"> 
+                <h1 className='Dialog-title'>
+                        Welcome
+                </h1>
+                <p className='Dialof-message'>
+                        Thankyou 
+                </p>
+                </FancyBorder>
+        )
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+        <WelcomeDialog/>,
+        document.getElementById('root')
+)
